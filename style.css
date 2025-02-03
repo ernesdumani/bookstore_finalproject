@@ -1,0 +1,56 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    margin-top: 15px; 
+    padding: 10px 20px; 
+    background: linear-gradient(to right, #574964, #9F8383, #C8AAAA );
+    opacity: 79%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    color: white;
+    opacity: 100%;
+    text-align: center; 
+}
+
+body {
+    background: 
+        radial-gradient(circle, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.8) 100%), /* Vignette effect */
+        url('books.png'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    height: 100vh;
+}
+
+
+
+header .logo h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+main {
+    padding: 40px 20px;
+}

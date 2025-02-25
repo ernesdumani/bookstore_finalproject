@@ -1,31 +1,3 @@
-<?php
-session_start();
-
-
-require_once 'config.php';
-
-if (isset($_SESSION['username'])) {
-    header("Location: welcome.php");
-    exit;
-}
-
-if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->execute([$username]);
-    $user = $stmt->fetch();
-
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['username'] = $user['username'];
-        header("Location: welcome.php");
-        exit;
-    } else {
-        $error = "Invalid username or password.";
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,8 +71,39 @@ if (isset($_POST['login'])) {
             text-decoration: underline;
         }
     </style>
-</head>
+    </head>
 <body>
+    
+    <?php
+session_start();
+
+
+
+require_once 'config.php';
+
+if (isset($_SESSION['username'])) {
+    header("Location: welcome.php");
+    exit;
+}
+
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch();
+
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['username'] = $user['username'];
+        header("Location: welcome.php");
+        exit;
+    } else {
+        $error = "Invalid username or password.";
+    }
+}
+
+?>
 
 <div class="login-container">
     <h2>Sign In</h2>
